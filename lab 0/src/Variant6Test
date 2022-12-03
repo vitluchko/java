@@ -1,0 +1,174 @@
+package lab0;
+
+import static org.testng.Assert.assertEquals;
+
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import Lab0.Variant6;
+
+public class Variant6Test {
+
+    ////////////////////////////////////////////////
+
+    @Test(dataProvider = "InputOutputProvider")
+    public void InputOutputTest(int p1, int p2, int p3, int[] p4) {
+        assertEquals(new Variant6().inputOutputTask(p1, p2, p3), p4);
+    }
+
+    @DataProvider
+    public Object[][] InputOutputProvider(){
+        return new Object[][] {{2, 1, 4, new int[] {8, 28}}, {1, 1, 1, new int[] {1, 6}}};
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void NegativeInputOutputTest() {
+        new Variant6().inputOutputTask(0, 0, 0);
+    }
+
+    ////////////////////////////////////////////////
+
+    @Test(dataProvider = "IntegerProvider")
+    public void IntegerTest(int p1, int[] p2) {
+        assertEquals(new Variant6().integerTask(p1), p2);
+    }
+
+    @DataProvider
+    public Object[][] IntegerProvider(){
+        return new Object[][] {{20, new int[] {2, 0}}, {45, new int[] {4, 5}}};
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void NegativeIntegerTest() {
+        new Variant6().integerTask(9);
+    }
+
+    ////////////////////////////////////////////////
+
+    @Test(dataProvider = "BooleanProvider")
+    public void BooleanTest(int p1, int p2, int p3, boolean p4) {
+        assertEquals(new Variant6().booleanTask(p1, p2, p3), p4);
+    }
+
+    @DataProvider
+    public Object[][] BooleanProvider(){
+        return new Object[][] {{2, 4, 6, true}, {2, 9, 2, false}};
+    }
+
+    ////////////////////////////////////////////////
+
+    @Test(dataProvider = "IfProvider")
+    public void IfTest(int p1, int p2, int p3) {
+        assertEquals(new Variant6().ifTask(p1, p2), p3);
+    }
+
+    @DataProvider
+    public Object[][] IfProvider(){
+        return new Object[][] {{4, 12, 12}, {10, -2, 10}};
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void NegativeIfTest() {
+        new Variant6().ifTask(4, 4);
+    }
+
+    ////////////////////////////////////////////////
+
+    @Test(dataProvider = "SwitchProvider")
+    public void SwitchTest(int p1, double p2, double p3) {
+        assertEquals(new Variant6().switchTask(p1, p2), p3);
+    }
+
+    @DataProvider
+    public Object[][] SwitchProvider(){
+        return new Object[][] {{1, 1, 0.1}, {2, 1, 1000}, {3, 1, 1}, {4, 1, 0.001}, {5, 1, 0.01}};
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void NegativeSwitchTest() {
+        new Variant6().switchTask(-12, 120);
+    }
+
+    ////////////////////////////////////////////////
+
+    @Test(dataProvider = "ForProvider")
+    public void ForTest(double p1, double[] p2) {
+        assertEquals(new Variant6().forTask(p1), p2);
+    }
+
+    @DataProvider
+    public Object[][] ForProvider(){
+        return new Object[][] {{1, new double[] {1.2, 1.4, 1.6, 1.8, 2}}};
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void NegativeForTest() {
+        new Variant6().forTask(-2);
+    }
+
+    ////////////////////////////////////////////////
+
+    @Test(dataProvider = "WhileProvider")
+    public void WhileTest(int p1, double p2) {
+        assertEquals(new Variant6().whileTask(p1), p2);
+    }
+
+    @DataProvider
+    public Object[][] WhileProvider(){
+        return new Object[][] {{5, 15}, {0, 1}, {6, 48}};
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void NegativeWhileTest() {
+        new Variant6().whileTask(-2);
+    }
+
+    ////////////////////////////////////////////////
+
+    @Test(dataProvider = "ArrayProvider")
+    public void ArrayTest(int p1, int p2, int p3, int[] p4) {
+        assertEquals(new Variant6().arrayTask(p1, p2, p3), p4);
+    }
+
+    @DataProvider
+    public Object[][] ArrayProvider(){
+        return new Object[][] {{4, 4, 2, new int[] {4, 2, 6, 12}}, {4, -4, 5, new int[] {-4, 5, 1, 2}}};
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void NegativeArrayTest() {
+        new Variant6().arrayTask(-2, 24, -1);
+    }
+
+    ////////////////////////////////////////////////
+
+    @Test(dataProvider = "MatrixProvider")
+    public void MatrixTest(int p1, int p2, int p3, int[] p4, int[][] p5) {
+        assertEquals(new Variant6().matrixTask(p1, p2, p3, p4), p5);
+    }
+
+    @DataProvider
+    public Object[][] MatrixProvider(){
+
+        int[][] res1 = {
+                {1, 2},
+                {3, 6}};
+
+        int[][] res2 = {
+                {4, 2, -1, 0, 3},
+                {-8, -4, 2, 0, -6},
+                {16, 8, -4, 0, 12},
+                {-32, -16, 8, 0, -24}};
+
+        return new Object[][] {
+                {2, 2, 3, new int[]{1, 2}, res1},
+                {4, 5, -2, new int[]{4, 2, -1, 0, 3}, res2}
+        };
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void NegativeMatrixTest() {
+        int[] N = {3, 4, 5};
+        new Variant6().matrixTask(-2, 4, 2, N);
+    }
+}
