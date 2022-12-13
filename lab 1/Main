@@ -1,0 +1,37 @@
+package org.example;
+
+public class Main {
+    public static void main(String[] args) {
+        User user = new UserBuilderImplementation()
+                .setName("Vladislav")
+                .setIdCode("123456")
+                .setCountry("Australia")
+                .build();
+
+        Wallet wallet1 = new WalletBuilderImplementation()
+                .setUser(user)
+                .setId(1)
+                .setAmount(249.42)
+                .setCurrency("USD")
+                .build();
+
+        Wallet wallet2 = new WalletBuilderImplementation()
+                .setUser(user)
+                .setId(2)
+                .setAmount(324.25)
+                .setCurrency("EUR")
+                .build();
+
+        System.out.println(user.toString());
+        System.out.println(user.hashCode());
+        System.out.println(user.equals(user));
+
+        System.out.println(wallet1.toString());
+        System.out.println(wallet1.hashCode());
+        System.out.println(wallet1.equals(wallet2));
+
+        System.out.println(wallet2.toString());
+        System.out.println(wallet2.hashCode());
+        System.out.println(wallet2.equals(wallet2));
+    }
+}
