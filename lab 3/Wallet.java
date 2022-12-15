@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public class Wallet {
+public class Wallet implements Comparable<Wallet> {
     private User user;
     private int id;
     private double amount;
@@ -61,5 +61,15 @@ public class Wallet {
     @Override
     public int hashCode() {
         return Objects.hash(user, id, amount, currency);
+    }
+
+    /**
+     * @param o the object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(Wallet o) {
+        Integer x = id;
+        return x.compareTo(o.getId());
     }
 }
