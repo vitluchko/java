@@ -63,10 +63,6 @@ public class Wallet implements Comparable<Wallet> {
         return Objects.hash(user, id, amount, currency);
     }
 
-    /**
-     * @param o the object to be compared.
-     * @return
-     */
     @Override
     public int compareTo(Wallet o) {
         Integer x = id;
